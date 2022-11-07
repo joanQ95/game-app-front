@@ -1,24 +1,19 @@
-// import dotenv from "dotenv"; 
 import axios from 'axios';
 import { useState, useEffect } from "react";  
 import './App.css';
-require('dotenv').config();
-const { URL} = process.env;
-// import dotenv from 'dotenv';
-// dotenv.config();
 
 function App() {
   const [array, setArray] = useState([]);
    const callapi = async ()=> {
+     console.log(process.env.REACT_APP_URL_BACK)
     const info1 = await axios.get(process.env.REACT_APP_URL_BACK)
+    console.log(info1)
     setArray(info1.data)
     return info1
   }
   useEffect(() => {
-    // setArray(callapi.then);
     callapi();
   },[]);
-//background_image
 
 console.log(array)
   return (
